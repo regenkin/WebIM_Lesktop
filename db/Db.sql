@@ -47,6 +47,7 @@ BEGIN
 		[Mobile] [nvarchar](32) NOT NULL DEFAULT N'',
 		[IsDeleted] [int] NOT NULL DEFAULT 0,
 		[SubType] [int] NOT NULL DEFAULT 1, 
+		[openid] [nvarchar](64) NOT NULL DEFAULT N'',
 		UNIQUE(UpperName),
 		UNIQUE(Name)
 	)
@@ -57,7 +58,7 @@ BEGIN
 	
 	SET IDENTITY_INSERT Users ON
 	INSERT INTO Users ([ID], [Name], Password, Type, Nickname, UpperName, RegisterTime)
-	VALUES (2, N'administrator', N'', 0, N'系统管理员', N'ADMINISTRATOR', getdate());
+	VALUES (2, N'kfadmin', N'', 0, N'系统管理员', N'ADMINISTRATOR', getdate());
 	INSERT INTO Users ([ID], [Name], Password, Type, Nickname, UpperName, RegisterTime)
 	VALUES (3, N'admin', N'D41D8CD98F00B204E9800998ECF8427E', 0, N'系统管理员', N'ADMIN', getdate());
 	SET IDENTITY_INSERT Users OFF

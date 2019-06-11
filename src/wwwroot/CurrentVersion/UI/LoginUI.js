@@ -213,11 +213,20 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 		{
 			var values = {
 				Name: login_inputunits[0].GetValue(), 
-				Password: login_inputunits[1].GetValue()
+                Password: login_inputunits[1].GetValue(),
 			};
 			login_callback_(values);
 		}
-	}
+    }
+
+    this_.DoLoginToken = function () {
+        var values = {
+            Name: "",
+            Password: "",
+            Token:"123"
+        };
+        login_callback_(values);
+    }
 }
 
 })();
