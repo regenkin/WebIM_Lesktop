@@ -263,21 +263,18 @@ namespace Client
 			if (enable)
 			{
 				string startupDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-
-				IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
-				IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(
-					startupDir + "\\Client.lnk"
-				);
-				shortcut.TargetPath = AppDomain.CurrentDomain.BaseDirectory + @"Client.exe";
-				shortcut.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
-				shortcut.WindowStyle = 1;
-				shortcut.Description = "企业即时通讯软件";
-				shortcut.Save();
+				//IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
+				//IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(startupDir + "\\Client.lnk");
+				//shortcut.TargetPath = AppDomain.CurrentDomain.BaseDirectory + @"Client.exe";
+				//shortcut.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+				//shortcut.WindowStyle = 1;
+				//shortcut.Description = "企业即时通讯软件";
+				//shortcut.Save();
 			}
 			else
 			{
-				string startupDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-				if (File.Exists(startupDir + "\\Client.lnk")) File.Delete(startupDir + "\\Client.lnk");
+				//string startupDir = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+				//if (File.Exists(startupDir + "\\Client.lnk")) File.Delete(startupDir + "\\Client.lnk");
 			}
 			Config.Instance.SetValue("AutoStart", enable ? "true" : "false");
 		}

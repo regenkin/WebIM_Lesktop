@@ -459,6 +459,7 @@ namespace Client
             _menuAutoLogin = new MenuItem();
             _menuAutoLogin.Text = "禁止自动登录";
             _menuAutoLogin.Checked = string.IsNullOrEmpty(Config.Instance.GetValue("AutoLogin"));
+            _menuAutoLogin.Enabled = !_menuAutoLogin.Checked;
             _menuAutoLogin.Click += new EventHandler(menuAutoLogin_Click);
             menuCtrl.MenuItems.Add(menuCtrl.MenuItems.Count - 1, _menuAutoLogin);
             clientMenuItems[4] = _menuAutoLogin;

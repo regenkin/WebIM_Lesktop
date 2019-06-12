@@ -48,11 +48,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.IWshRuntimeLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\Lib\Interop.IWshRuntimeLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -135,7 +130,7 @@
       <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\MsHtmHstInterop\MsHtmHstInterop.csproj">
-      <Project>{CAA21575-73FD-46E4-824A-926BB0410B3F}</Project>
+      <Project>{caa21575-73fd-46e4-824a-926bb0410b3f}</Project>
       <Name>MsHtmHstInterop</Name>
     </ProjectReference>
   </ItemGroup>
