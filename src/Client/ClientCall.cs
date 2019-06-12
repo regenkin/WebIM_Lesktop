@@ -403,14 +403,14 @@ namespace Client
 			return new Menu(_browser, config);
 		}
 
-		public void Login(string name, string password, object handler)
+		public void Login(string name, string password,string token, object handler)
 		{
 			string data = String.Format(
 				"<?xml version=\"1.0\" encoding=\"utf-8\" ?>" +
 				"<Command ID=\"ID100000001-1091949377\" SessionID=\"\" Handler=\"Core.Web Common_CH\" IsAsyn=\"false\">" +
-				"{{&#34;Action&#34;:&#34;Login&#34;,&#34;User&#34;:&#34;{0}&#34;,&#34;Password&#34;:&#34;{1}&#34;,&#34;ClientMode&#34;:true,&#34;EmbedCode&#34;:{2}}}" +
+                "{{&#34;Action&#34;:&#34;Login&#34;,&#34;User&#34;:&#34;{0}&#34;,&#34;Password&#34;:&#34;{1}&#34;,&#34;Token&#34;:&#34;{2}&#34;,&#34;ClientMode&#34;:true,&#34;EmbedCode&#34;:{3}}}" +
 				"</Command>",
-				name, password, Global.EmbedCode
+				name, password, token, Global.EmbedCode
 			);
 				
 			MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();

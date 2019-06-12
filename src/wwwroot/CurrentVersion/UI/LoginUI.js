@@ -214,6 +214,7 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 			var values = {
 				Name: login_inputunits[0].GetValue(), 
                 Password: login_inputunits[1].GetValue(),
+                Token: ""
 			};
 			login_callback_(values);
 		}

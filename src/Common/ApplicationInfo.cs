@@ -22,15 +22,15 @@ namespace Custom
 		{
 		}
 
-		public const String AssemblyTitle = "云骞即时通讯软件";
+		public const String AssemblyTitle = "君飞即时通讯软件";
 
-		public const String AssemblyCompany = "云骞";
+		public const String AssemblyCompany = "君飞";
 
-		public const String AssemblyProduct = "云骞即时通讯软件";
+		public const String AssemblyProduct = "君飞即时通讯软件";
 
-		public const String AssemblyCopyright = "Copyright © 云骞 2013";
+		public const String AssemblyCopyright = "Copyright © kinfar.net 2018";
 
-		public const String ReleaseVersion = "3.0.0.0";
+		public const String ReleaseVersion = "8.0.0.0";
 
 		public const bool FilterHtml = true;
 

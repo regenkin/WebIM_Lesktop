@@ -87,10 +87,10 @@ namespace Client
 				Application.SetCompatibleTextRenderingDefault(false);
 
 				Global.TrayIconMenu = new ContextMenu();
-				MenuItem menuItem1 = new MenuItem();
-				menuItem1.Text = "退出";
-				menuItem1.Click += new EventHandler(menuItem1_Click);
-				Global.TrayIconMenu.MenuItems.AddRange(new MenuItem[] { menuItem1 });
+				MenuItem menuExitItem = new MenuItem();
+				menuExitItem.Text = "退出";
+				menuExitItem.Click += new EventHandler(menuExitItem_Click);
+				Global.TrayIconMenu.MenuItems.AddRange(new MenuItem[] { menuExitItem });
 
 				Global.TrayIcon = new NotifyIcon();
 				Global.TrayIcon.Icon = Properties.Resources.TrayGred;
@@ -121,7 +121,11 @@ namespace Client
 				System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "Update.exe");
 			}
 		}
-
+        /// <summary>
+        /// 获取CMD执行参数
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
 		static Dictionary<String, String> GetCmdLineParams(string[] args)
 		{
 			Dictionary<String, String> ps = new Dictionary<String, String>();
@@ -140,22 +144,35 @@ namespace Client
 			}
 			return ps;
 		}
-
+        /// <summary>
+        /// 创建桌面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static public void Desktop_HandleCreated(object sender, EventArgs e)
 		{
 		}
-
+        /// <summary>
+        /// 销毁桌面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static public void Desktop_HandleDestroyed(object sender, EventArgs e)
 		{
 		}
 
 		static bool m_IsLeave = false;
-
+        /// <summary>
+        /// 是否离开状态
+        /// </summary>
 		public static bool IsLeave
 		{
 			get { return m_IsLeave; }
 		}
-
+        /// <summary>
+        /// 写日志
+        /// </summary>
+        /// <param name="content"></param>
 		static void WriteCrash(string content)
 		{
 			try
@@ -173,7 +190,11 @@ namespace Client
 			{
 			}
 		}
-
+        /// <summary>
+        /// 应用进程异常
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
 		{
 			try
@@ -193,7 +214,11 @@ namespace Client
 			{
 			}
 		}
-
+        /// <summary>
+        /// 当前运行异常
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
 		{
 			try
@@ -228,7 +253,10 @@ namespace Client
 			{
 			}
 		}
-
+        /// <summary>
+        /// 获取当前进程名称
+        /// </summary>
+        /// <returns></returns>
 		private static String GetProcesses()
 		{
 			try
@@ -252,7 +280,10 @@ namespace Client
 				return String.Empty;
 			}
 		}
-
+        /// <summary>
+        /// 获取当前进行进程模块
+        /// </summary>
+        /// <returns></returns>
 		private static String GetModules()
 		{
 			try
@@ -277,7 +308,10 @@ namespace Client
 				return String.Empty;
 			}
 		}
-
+        /// <summary>
+        /// 获取当前系统信息
+        /// </summary>
+        /// <returns></returns>
 		private static String GetSystemInfo()
 		{
 			try
@@ -312,7 +346,10 @@ namespace Client
 				return String.Empty;
 			}
 		}
-
+        /// <summary>
+        /// 检查更新
+        /// </summary>
+        /// <returns></returns>
 		private static bool CheckUpdate()
 		{
 #			if DEBUG
@@ -333,14 +370,22 @@ namespace Client
 			return currentVersion < latestVersion;
 #			endif
 		}
-
+        /// <summary>
+        /// 桌面关闭事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void Desktop_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			ResponsesHandler.Instance.Stop();
 			Global.TrayIcon.Visible = false;
 			Application.Exit();
 		}
-
+        /// <summary>
+        /// 桌面载入事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void Desktop_PageLoad(object sender, AppWnd.PageLoadEventArgs e)
 		{
 			if (System.IO.Path.GetFileName(e.Url).ToLower() != "login.htm")
@@ -354,7 +399,10 @@ namespace Client
 				}
 			}
 		}
-
+        /// <summary>
+        /// 初始化客户端配制
+        /// </summary>
+        /// <param name="success"></param>
 		public static void InitClient(bool success)
 		{
 			if (success)
@@ -364,7 +412,9 @@ namespace Client
 				Client.Global.ServerVersion = Utility.GetProperty(config, "Version").ToString();
 			}
 		}
-
+        /// <summary>
+        /// 初始化完成后事件
+        /// </summary>
 		public static void AfterInitService()
 		{
 			object core = Global.Desktop.Core;
@@ -382,7 +432,7 @@ namespace Client
 			ContextMenu menuCtrl = (ContextMenu)Utility.GetProperty(menu, "MenuCtrl");
 			menuCtrl.Popup += new EventHandler(menuCtrl_Popup);
 
-			MenuItem[] clientMenuItems = new MenuItem[4];
+			MenuItem[] clientMenuItems = new MenuItem[7];
 
 			clientMenuItems[0] = new MenuItem();
 			clientMenuItems[0].Text = "-";
@@ -406,59 +456,126 @@ namespace Client
 			clientMenuItems[3].Text = "-";
 			menuCtrl.MenuItems.Add(menuCtrl.MenuItems.Count - 1, clientMenuItems[3]);
 
-			Global.TrayIcon.ContextMenu = menuCtrl;
+            _menuAutoLogin = new MenuItem();
+            _menuAutoLogin.Text = "禁止自动登录";
+            _menuAutoLogin.Checked = string.IsNullOrEmpty(Config.Instance.GetValue("AutoLogin"));
+            _menuAutoLogin.Click += new EventHandler(menuAutoLogin_Click);
+            menuCtrl.MenuItems.Add(menuCtrl.MenuItems.Count - 1, _menuAutoLogin);
+            clientMenuItems[4] = _menuAutoLogin;
+
+            _menuAutoStart = new MenuItem();
+            _menuAutoStart.Text = "开机启动";
+            _menuAutoStart.Checked = Config.Instance.GetValue("AutoStart") == "true";
+            _menuAutoStart.Click += new EventHandler(menuAutoStart_Click);
+            menuCtrl.MenuItems.Add(menuCtrl.MenuItems.Count - 1, _menuAutoStart);
+            clientMenuItems[5] = _menuAutoLogin;
+
+            clientMenuItems[6] = new MenuItem();
+            clientMenuItems[6].Text = "-";
+            menuCtrl.MenuItems.Add(menuCtrl.MenuItems.Count - 1, clientMenuItems[6]);
+
+            Global.TrayIcon.ContextMenu = menuCtrl;
 		}
 
-		static MenuItem _menuSilence = null, _menuUseMsgBox = null;
-
+		static MenuItem _menuSilence = null, _menuUseMsgBox = null,_menuAutoLogin=null, _menuAutoStart=null;
+        /// <summary>
+        /// 判断是否静音
+        /// </summary>
 		public static bool Silence
 		{
 			get { return _menuSilence.Checked; }
 		}
-
+        /// <summary>
+        /// 判断是否启用消息合子
+        /// </summary>
 		public static bool UseMsgBox
 		{
 			get { return _menuUseMsgBox.Checked; }
 		}
-
+        /// <summary>
+        /// 弹出窗面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void menuCtrl_Popup(object sender, EventArgs e)
 		{
 			if (_menuSilence != null) _menuSilence.Checked = Config.Instance.GetValue("Slience") == "true";
 			if (_menuUseMsgBox != null) _menuUseMsgBox.Checked = Config.Instance.GetValue("UseMsgBox") == "true";
 		}
-
+        /// <summary>
+        /// 静音菜单事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void menuSilence_Click(object sender, EventArgs e)
 		{
 			_menuSilence.Checked = !_menuSilence.Checked;
 			Config.Instance.SetValue("Slience", _menuSilence.Checked ? "true" : "false");
 		}
-
+        /// <summary>
+        /// 消息盒子菜单事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void menuUseMsgBox_Click(object sender, EventArgs e)
 		{
 			_menuUseMsgBox.Checked = !_menuUseMsgBox.Checked;
 			Config.Instance.SetValue("UseMsgBox", _menuUseMsgBox.Checked ? "true" : "false");
 		}
-
-		static void menuItem1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 开机启动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		static void menuAutoStart_Click(object sender, EventArgs e)
+		{
+            _menuAutoStart.Checked = !_menuAutoStart.Checked;
+			Config.Instance.SetValue("AutoStart", _menuAutoStart.Checked ? "true" : "false");
+		}
+        /// <summary>
+        /// 禁止自动登录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		static void menuAutoLogin_Click(object sender, EventArgs e)
+		{
+            _menuAutoLogin.Checked = true;
+            Config.Instance.SetValue("AutoLogin", "");
+            _menuAutoLogin.Enabled = false;
+        }
+        /// <summary>
+        /// 退出事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		static void menuExitItem_Click(object sender, EventArgs e)
 		{
 			Global.Desktop.Close();
 			ResponsesHandler.Instance.Stop();
 			Global.TrayIcon.Visible = false;
 			Application.Exit();
 		}
-
+        /// <summary>
+        /// 获取未读消息事件
+        /// </summary>
+        /// <returns></returns>
 		public static int GetUnreadMsgCount()
 		{
 			object impl = Utility.GetProperty(Global.Desktop.Core, "UnreadMsgBoxImpl");
 			return (int)Utility.InvokeMethod(impl, "GetUnreadMsgCount", new object[] { });
 		}
-
+        /// <summary>
+        /// 判断消息盒子是否可见
+        /// </summary>
+        /// <returns></returns>
 		public static bool IsUnreadMsgBoxVisible()
 		{
 			object impl = Utility.GetProperty(Global.Desktop.Core, "UnreadMsgBoxImpl");
 			return (bool)Utility.InvokeMethod(impl, "IsUnreadMsgBoxVisible", new object[] { });
 		}
-
+        /// <summary>
+        /// 刷新任务栏图标
+        /// </summary>
 		public static void RefreshTrayIcon()
 		{
 			if (Program.GetUnreadMsgCount() > 0)
@@ -478,11 +595,19 @@ namespace Client
 				Client.Global.TrayIcon.Text = String.Format("{0}({1})", nickname, name);
 			}
 		}
-
+        /// <summary>
+        /// 任务栏图标鼠标划过事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void TrayIcon_MouseMove(object sender, MouseEventArgs e)
 		{
 		}
-
+        /// <summary>
+        /// 单击任务单图标
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void TrayIcon_Click(object sender, MouseEventArgs e)
 		{
 			if (SessionImpl.Instance.GetSessionID() != "" && e.Button == MouseButtons.Left)

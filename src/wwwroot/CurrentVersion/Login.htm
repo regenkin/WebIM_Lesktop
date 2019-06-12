@@ -103,6 +103,7 @@
 				Action: "Login",
 				User: values.Name,
                 Password: values.Password,
+                Token: values.Token,
 				ClietMode: ClientMode
 			};
 
@@ -129,7 +130,7 @@
 			else
 			{
 				window.external.Login(
-					values.Name, values.Password,
+					values.Name, values.Password,values.Token,
 					{
 						onsuccess: function(status, content, cookie)
 						{
