@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Update
-    Latest="0.0.0.0"
-    URL="UPDATE.zip"
+<?xml version="1.0" encoding="utf-8"?>
+<Update 
+    Latest="8.0.0.0" 
+    URL="http://localhost:30399/Update/UPDATE-8.0.0.0.zip"
 >
 </Update>
