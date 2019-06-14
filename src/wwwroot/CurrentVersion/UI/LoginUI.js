@@ -13,7 +13,7 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 	"<div class='ct login_panel'>" +
 		"<div class='logo'></div>" +
         "<div class='login'>" +
-            "<div id='slider2' class='slider'></div>" +
+            "<div id='slider2' class='slider' style='display:none'></div>" +
 			"<div class='link_container'>" +
 				"<a class='ct_link' type='button'>下载客户端</a>" +
 				"<a class='ct_link' type='button'>注册新用户</a>" +
@@ -34,23 +34,22 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 	"</div>"
 	
 	container_.innerHTML = html;
-
 	if(window.ClientMode == true)
 	{
 		Core.Utility.ModifyCss(container_.firstChild, "clientmode");
-	}
-	
-	var login_page_ = container_.firstChild.childNodes[1];
-    var login_link_container_ = login_page_.childNodes[0];
-	var viewreg_button_ = login_page_.childNodes[2];
-	var login_button_ = login_page_.childNodes[3];	
+    }
+
+    var login_page_ = container_.firstChild.childNodes[1];
+    var login_slider2_ = login_page_.childNodes[0];
+    var login_link_container_ = login_page_.childNodes[1];
+	var viewreg_button_ = login_page_.childNodes[3];
+	var login_button_ = login_page_.childNodes[4];	
 	var register_link_ = login_link_container_.childNodes[1];	
 	var download_link_ = login_link_container_.childNodes[0];	
 	
-	var client_opt_ = login_page_.childNodes[1];
+	var client_opt_ = login_page_.childNodes[2];
 	var autostart_ = client_opt_.childNodes[3];
 	var autologin_ = client_opt_.childNodes[1];
-
 	var login_inputunits = [
 		new Core.UI.InputUnit(
 			"用户名：", "text", "login_name", 32, "", "请输入用户名！", 
@@ -62,7 +61,7 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 	];
 	for(var i in login_inputunits)
 	{
-		login_page_.insertBefore(login_inputunits[i].GetDom(), login_link_container_);
+        login_page_.insertBefore(login_inputunits[i].GetDom(), login_slider2_);
 	}
 	
 	var register_page_ = container_.firstChild.childNodes[2];	
@@ -90,7 +89,23 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 	for(var i in register_inputunits)
 	{
 		register_page_.insertBefore(register_inputunits[i].GetDom(), register_link_container_);
-	}
+    }
+
+    $("#slider2").slider({
+        width: 240, // width
+        height: 20, // height
+        sliderBg: "rgb(134, 134, 131)", // 滑块背景颜色
+        color: "#fff", // 文字颜色
+        fontSize: 12, // 文字大小
+        bgColor: "#33CC00", // 背景颜色
+        textMsg: "按住滑块，拖拽验证", // 提示文字
+        successMsg: "验证通过", // 验证成功提示文字
+        successColor: "red", // 滑块验证成功提示文字颜色
+        time: 400, // 返回时间
+        callback: function (result) { // 回调函数，true(成功),false(失败)
+            //$("#result2").text(result);
+        }
+    });
 
 	this_.GetValues = function()
 	{
@@ -229,22 +244,6 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
         };
         login_callback_(values);
     }
-
-    $("#slider2").slider({
-        width: 340, // width
-        height: 40, // height
-        sliderBg: "rgb(134, 134, 131)", // 滑块背景颜色
-        color: "#fff", // 文字颜色
-        fontSize: 14, // 文字大小
-        bgColor: "#33CC00", // 背景颜色
-        textMsg: "按住滑块，拖拽验证", // 提示文字
-        successMsg: "验证通过了哦", // 验证成功提示文字
-        successColor: "red", // 滑块验证成功提示文字颜色
-        time: 400, // 返回时间
-        callback: function (result) { // 回调函数，true(成功),false(失败)
-            $("#result2").text(result);
-        }
-    });
 }
 
 })();

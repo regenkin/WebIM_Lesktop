@@ -125,9 +125,9 @@
     <None Include="Resources\tray_gred.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{44B8D277-1048-4920-A887-ADB46FC3A0D1}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\ClientUtil\ClientUtil.csproj">
+      <Project>{d3a3eb38-e2a9-49a2-9d67-0a0df8d04ad7}</Project>
+      <Name>ClientUtil</Name>
     </ProjectReference>
     <ProjectReference Include="..\MsHtmHstInterop\MsHtmHstInterop.csproj">
       <Project>{caa21575-73fd-46e4-824a-926bb0410b3f}</Project>

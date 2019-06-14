@@ -4,6 +4,7 @@
     <title></title>
     <link href="Themes/Default/CommonCtrl.css" rel="stylesheet" type="text/css" />
     <link href="Themes/Default/LoginUI.css" rel="stylesheet" type="text/css" />
+    <link href="Themes/Default/jquery.slider.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         html {
             overflow: hidden;
@@ -36,6 +37,7 @@
         .ui-slider-wrap {
             background: #e8e8e8;
             position: relative;
+            margin-left: 230px;
         }
 
             .ui-slider-wrap .ui-slider-bg {
@@ -58,7 +60,7 @@
             }
 
             .ui-slider-wrap .ui-slider-btn {
-                background: #fff url(../img/slider.png) no-repeat center;
+                background: #fff url(Themes/Default/login/slider.png) no-repeat center;
             }
 
                 .ui-slider-wrap .ui-slider-btn.success {
@@ -84,7 +86,6 @@
                 user-select: none;
             }
     </style>
-    <link rel="stylesheet" href="UI/jquery.slider.css" />
     <script src="UI/jquery.min.js" type="text/javascript"></script>
     <script src="UI/jquery.slider.min.js" type="text/javascript"></script>
     <script src="Core/Common.js" type="text/javascript"></script>
@@ -94,7 +95,6 @@
     <script src="UI/LoginUI.js" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript">
-
         document.oncontextmenu = function () { return false; }
 
         document.onkeydown = function () {
@@ -345,6 +345,29 @@
 </head>
 <body>
     <div id="loading_div"></div>
-    <div id="login_panel"> </div>
+    <div id="login_panel">
+        <div class='ct login_panel'>
+            <div class='logo'></div> 
+            <div class='login'>
+                <div id='slider2' class='slider'></div> 
+                <div class='link_container'>
+                    <a class='ct_link' type='button'>下载客户端</a> 
+                    <a class='ct_link' type='button'>注册新用户</a> 
+                </div> 
+                <div class='client_opt'>
+                    <label for='cb_autologin'>自动登录</label><input id='cb_autologin' type='checkbox' /> 
+                    <label for='cb_autostart'>系统启动时自动启动</label><input id='cb_autostart' type='checkbox' /> 
+                </div> 
+                <input class='ct_button viewreg_button' type='button' value='注&nbsp;册' /> 
+                <input class='ct_button login_button' type='button' value='登&nbsp录' /> 
+            </div> 
+            <div class='register'>
+                <div class='link_container'>
+                    <a class='ct_link' type='button'>返回登录页面</a> 
+                </div> 
+                <input class='ct_button register_button' type='button' value='注&nbsp;册' /> 
+            </div> 
+        </div>
+    </div>
 </body>
 </html>

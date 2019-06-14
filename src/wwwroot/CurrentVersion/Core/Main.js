@@ -1963,7 +1963,7 @@ Core.Login = function()
 	{
 		loginform_.GetTag().Name = Core.Session.GetUserInfo().Name;
 	}
-	Core.Session.Reset();
+    Core.Session.Reset();
 	loginform_.Load(Core.GetUrl("Login.htm"), function() { });
 }
 
