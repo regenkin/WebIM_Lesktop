@@ -12,11 +12,12 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 	var html = 
 	"<div class='ct login_panel'>" +
 		"<div class='logo'></div>" +
-		"<div class='login'>" +
+        "<div class='login'>" +
+            "<div id='slider2' class='slider'></div>" +
 			"<div class='link_container'>" +
 				"<a class='ct_link' type='button'>下载客户端</a>" +
 				"<a class='ct_link' type='button'>注册新用户</a>" +
-			"</div>" +
+            "</div>" +
 			"<div class='client_opt'>" +
 				"<label for='cb_autologin'>自动登录</label><input id='cb_autologin' type='checkbox' />" +
 				"<label for='cb_autostart'>系统启动时自动启动</label><input id='cb_autostart' type='checkbox' />" +
@@ -40,7 +41,7 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 	}
 	
 	var login_page_ = container_.firstChild.childNodes[1];
-	var login_link_container_ = login_page_.firstChild;
+    var login_link_container_ = login_page_.childNodes[0];
 	var viewreg_button_ = login_page_.childNodes[2];
 	var login_button_ = login_page_.childNodes[3];	
 	var register_link_ = login_link_container_.childNodes[1];	
@@ -83,7 +84,7 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
 		new Core.UI.InputUnit(
 			"密码确认：", "password", "register_password_confirm", 16, "请输入6到16位字符", "请再次输入密码！",
 			[function (value) { return register_inputunits[2].GetValue() == value }, "两次输入的密码不一致！"]
-		)
+        )
 	];
 
 	for(var i in register_inputunits)
@@ -228,6 +229,22 @@ Core.UI.LoginPanel = function (container_, login_callback_, register_callback_)
         };
         login_callback_(values);
     }
+
+    $("#slider2").slider({
+        width: 340, // width
+        height: 40, // height
+        sliderBg: "rgb(134, 134, 131)", // 滑块背景颜色
+        color: "#fff", // 文字颜色
+        fontSize: 14, // 文字大小
+        bgColor: "#33CC00", // 背景颜色
+        textMsg: "按住滑块，拖拽验证", // 提示文字
+        successMsg: "验证通过了哦", // 验证成功提示文字
+        successColor: "red", // 滑块验证成功提示文字颜色
+        time: 400, // 返回时间
+        callback: function (result) { // 回调函数，true(成功),false(失败)
+            $("#result2").text(result);
+        }
+    });
 }
 
 })();
