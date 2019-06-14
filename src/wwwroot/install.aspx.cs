@@ -24,6 +24,8 @@ public partial class _lesktop_install : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
+        CheckIsInstall();
+
 		_basePath = Server.MapPath("~");
 
 		_host = Request.Url.Host;
@@ -37,8 +39,25 @@ public partial class _lesktop_install : System.Web.UI.Page
 		PlaceHolder1.Visible = File.Exists(_basePath + @"\App_Data\ip.mdb");
 		cbImportIP.Checked = File.Exists(_basePath + @"\App_Data\ip.mdb");
 	}
+    /// <summary>
+    /// 检查是否安装
+    /// </summary>
+    private bool CheckIsInstall()
+    {
+        XmlDocument webConfigXml = new XmlDocument();
+        webConfigXml.Load(_basePath + @"\web.config");
+        XmlElement appSettingsElem = webConfigXml.DocumentElement.GetElementsByTagName("appSettings")[0] as XmlElement;
+        foreach (XmlElement addElem in appSettingsElem.GetElementsByTagName("add"))
+        {
+            if (addElem.GetAttribute("key") == "Install")
+            {
+               return addElem.GetAttribute("value").ToString()=="1";
+            }
+        }
+        return false;
+    }
 
-	public static void Compress(string[] paths, string target, int level)
+    public static void Compress(string[] paths, string target, int level)
 	{
 		using (ZipOutputStream outputStream = new ZipOutputStream(File.Create(target)))
 		{
@@ -258,7 +277,11 @@ public partial class _lesktop_install : System.Web.UI.Page
 			{
 				addElem.SetAttribute("value", _fileRoot);
 			}
-		}
+            //if (addElem.GetAttribute("key") == "Install")
+            //{
+            //    addElem.SetAttribute("value", _fileRoot);
+            //}
+        }
 		webConfigXml.Save(_basePath + @"\web.config");
 	}
 
