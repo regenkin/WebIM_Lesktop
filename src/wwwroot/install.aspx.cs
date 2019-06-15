@@ -24,7 +24,7 @@ public partial class _lesktop_install : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-        CheckIsInstall();
+        //CheckIsInstall();
 
 		_basePath = Server.MapPath("~");
 
