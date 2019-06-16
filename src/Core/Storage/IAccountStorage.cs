@@ -11,7 +11,8 @@ namespace Core
 		DataRow GetUserInfo(int id);
 		int GetUserID(string name);
 
-		DataRowCollection GetAllUsers(int deptId);
+        int GetUserByOpenID(string openid);
+        DataRowCollection GetAllUsers(int deptId);
 		DataRowCollection GetAllCompanyUsers();
 		DataRowCollection GetAllGroups(int deptId);
 		DataRowCollection GetAllRegisterUsers();
@@ -39,7 +40,7 @@ namespace Core
 		void AddUsersToDept(int[] ids, int deptId);
 		void AddUsersToGroup(int[] ids, int deptId);
 
-		int CreateUser(String name, String nickname, String password, String email, int deptId, int subType);
+		int CreateUser(String name, String nickname, String password, String email, int deptId, int subType,string openid);
 		int CreateTempUser(String ip);
 		int CreateGroup(int creator, String name, String nickname, int deptId, int subType, string remark);
 		int CreateTempGroup(int creator, string members);

@@ -487,7 +487,8 @@ function SessionConstructor()
 	var m_UserInfo = null;
 	var m_SessionID = null;
 	var m_Cookie = null;
-	var GlobalHandler = {};
+    var GlobalHandler = {};
+    var m_Token = null;
 
 	obj.AfterInitService = new Core.Delegate();
 
@@ -506,7 +507,11 @@ function SessionConstructor()
 	obj.GetUserInfo = function()
 	{
 		return m_UserInfo;
-	}
+    }
+
+    obj.GetToken = function () {
+        return m_token;
+    }
 
 	obj.GetUserID = function()
 	{
@@ -534,7 +539,8 @@ function SessionConstructor()
 		m_UserName = null;
 		m_UserInfo = null;
 		m_SessionID = null;
-		m_Cookie = null;
+        m_Cookie = null;
+        m_Token = null;
 	}
 
 	obj.WriteLog = function(log)

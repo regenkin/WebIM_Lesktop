@@ -62,7 +62,29 @@ namespace Core
 			}
 		}
 
-		DataRowCollection IAccountStorage.GetAllUsers(int deptID)
+        int IAccountStorage.GetUserByOpenID(string openid)
+        {
+            SqlConnection conn = new SqlConnection(m_ConnectionString);
+            conn.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select ID from Users where openid = @openid";
+
+                cmd.Parameters.Add("openid", DbType.String).Value = openid;
+                object id = cmd.ExecuteScalar();
+
+                return id != DBNull.Value ? Convert.ToInt32(id) : 0;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        DataRowCollection IAccountStorage.GetAllUsers(int deptID)
 		{
 			SqlConnection conn = new SqlConnection(m_ConnectionString);
 			SqlCommand cmd = new SqlCommand();
@@ -568,7 +590,7 @@ namespace Core
 			}
 		}
 
-		int IAccountStorage.CreateUser(String name, String nickname, String password, String email, int deptId, int subType)
+		int IAccountStorage.CreateUser(String name, String nickname, String password, String email, int deptId, int subType,string openid)
 		{
 			SqlConnection conn = new SqlConnection(m_ConnectionString);
 			conn.Open();
@@ -587,8 +609,9 @@ namespace Core
 					insertUser.Parameters.Add("email", DbType.String).Value = email;
 					insertUser.Parameters.Add("deptId", DbType.Int32).Value = deptId;
 					insertUser.Parameters.Add("subType", DbType.Int32).Value = subType;
+                    insertUser.Parameters.Add("openid", DbType.String).Value = openid;
 
-					ret = insertUser.ExecuteScalar();
+                    ret = insertUser.ExecuteScalar();
 				}
 				catch
 				{

@@ -854,7 +854,8 @@ CREATE proc [dbo].[CreateUser](
 	@password nvarchar(256), 
 	@email nvarchar(256), 
 	@deptId int,
-	@subType int
+	@subType int,
+	@openid nvarchar(256)
 )
 as
 begin	
@@ -864,8 +865,8 @@ begin
 		return
 	end
 
-	insert into Users (Name,UpperName,Password,Nickname,Type,EMail,IsTemp,RegisterTime,SubType) 
-	values (@name,UPPER(@name),@password,@nickname,0,@email,0,getdate(),@subType);
+	insert into Users (Name,UpperName,Password,Nickname,Type,EMail,IsTemp,RegisterTime,SubType,openid) 
+	values (@name,UPPER(@name),@password,@nickname,0,@email,0,getdate(),@subType,@openid);
 
 	declare @id int
 	set @id = @@identity

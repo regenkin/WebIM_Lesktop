@@ -130,23 +130,31 @@ class Common_CH : Core.CommandHandler
 			else
 			{
 				String name = ps["User"].ToString();
+                string token = ps["Token"].ToString();
+                if (string.IsNullOrWhiteSpace(token))
+                {
 #if DEBUG
-				if (true)
+                    if (true)
 #else
 				if (Core.AccountImpl.Instance.Validate(name, ps["Password"].ToString()))		
 #endif
-				{
-					int id = AccountImpl.Instance.GetUserID(name);
-					AccountInfo user_info = AccountImpl.Instance.GetUserInfo(id);
-					if (user_info == null) throw new Exception("用户不存在或密码错误！");
-					Core.ServerImpl.Instance.Login(sessionId, Context, user_info.ID, Convert.ToBoolean(ps["ClientMode"]), null);
-					current_user = AccountImpl.Instance.GetUserInfo(id);
-				}
-				else
-				{
-					throw new Exception("用户不存在或密码错误！");
-				}
-			}
+                    {
+                        int id = AccountImpl.Instance.GetUserID(name);
+                        AccountInfo user_info = AccountImpl.Instance.GetUserInfo(id);
+                        if (user_info == null) throw new Exception("用户不存在或密码错误！");
+                        Core.ServerImpl.Instance.Login(sessionId, Context, user_info.ID, Convert.ToBoolean(ps["ClientMode"]), null);
+                        current_user = AccountImpl.Instance.GetUserInfo(id);
+                    }
+                    else
+                    {
+                        throw new Exception("用户不存在或密码错误！");
+                    }
+                }
+                else
+                {
+                    throw new Exception("无效的token！");
+                }
+            }
 
 			int group_id = 0;
 

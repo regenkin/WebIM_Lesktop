@@ -194,7 +194,11 @@ namespace Core
 				return null;
 			}
 		}
-
+        /// <summary>
+        /// 通过用户名获取ID
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
 		public int GetUserID(String name)
 		{
 			lock (lock_)
@@ -203,7 +207,15 @@ namespace Core
 			}
 		}
 
-		public String[] GetGroupManagers(string name)
+        public int GetUserByOpenID(String openid)
+        {
+            lock (lock_)
+            {
+                return AccountStorageImpl.GetUserByOpenID(openid);
+            }
+        }
+
+        public String[] GetGroupManagers(string name)
 		{
 			lock (lock_)
 			{
@@ -446,7 +458,7 @@ namespace Core
 		{
 			lock (lock_)
 			{
-				int id = AccountStorageImpl.CreateUser(name, nickname, password, email, deptId, subType);
+				int id = AccountStorageImpl.CreateUser(name, nickname, password, email, deptId, subType,"");
 				RefreshUserInfo(AccountImpl.AdminID);
 				return id;
 			}

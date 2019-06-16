@@ -106,9 +106,18 @@ namespace Client
 				Global.Desktop.PageLoad += new AppWnd.PageLoadDelegate(Desktop_PageLoad);
 				Global.Desktop.HandleCreated += new EventHandler(Desktop_HandleCreated);
 				Global.Desktop.HandleDestroyed += new EventHandler(Desktop_HandleDestroyed);
-				Global.Desktop.LoadPage(Global.ResUrl + "/Client.htm");
+                //MessageBox.Show(Global.CmdLineParams.Count.ToString());
+                if (Global.CmdLineParams.Count == 1 && Global.CmdLineParams.ContainsKey("token"))
+                {
+                    Global.Desktop.LoadPage(Global.ResUrl + string.Format("/Client.htm?token={0}", Global.CmdLineParams["token"]));
+                }
+				else
+                {
+                    Global.Desktop.LoadPage(Global.ResUrl + string.Format("/Client.htm?token=abcde"));
+                    //Global.Desktop.LoadPage(Global.ResUrl + "/Client.htm");
+                }
 
-				Global.TrayIcon.Visible = true;
+                Global.TrayIcon.Visible = true;
 
 				HotKeyUtil.RegisterAllHotKey();
 
