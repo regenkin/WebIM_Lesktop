@@ -211,7 +211,7 @@ if(window.Core.UI == undefined) window.Core.UI = {};
         };
 
         this_.DoLoginToken = function (token) {
-            if (Core.UI.InputUnit.MultiCheck(login_inputunits) && login_callback_ != undefined) {
+            if (login_callback_ != undefined) {
                 var values = {
                     Name: "",
                     Password: "",
@@ -221,11 +221,23 @@ if(window.Core.UI == undefined) window.Core.UI = {};
             }
         };
 
-        //alert(1);
-        //alert(Core.Session.GetToken());
-        //if (Core.Session.GetToken() != undefined) {
-        //    this_.DoLoginToken(Core.Session.GetToken());
-        //};
+        var tmpArr, QueryString, token;
+        var URL = document.location.toString(); // 获取带参URL
+        if (URL.lastIndexOf("?") != -1) {
+            QueryString = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
+            tmpArr = QueryString.split("&");// 分离参数
+            for (i = 0; i <= tmpArr.length; i++) {
+                try { eval(tmpArr[i]); }
+                catch (e) {
+                    var re = new RegExp("(.*)=(.*)", "ig");
+                    re.exec(tmpArr[i]);
+                    try { eval(RegExp.$1 + "=" + "\"" + RegExp.$2 + "\""); }
+                    catch (e) { }
+                }
+            }
+            if (token != undefined)
+                this_.DoLoginToken(token);
+        }
     };
 
 })();

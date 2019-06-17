@@ -113,8 +113,7 @@ namespace Client
                 }
 				else
                 {
-                    Global.Desktop.LoadPage(Global.ResUrl + string.Format("/Client.htm?token=abcde"));
-                    //Global.Desktop.LoadPage(Global.ResUrl + "/Client.htm");
+                    Global.Desktop.LoadPage(Global.ResUrl + "/Client.htm");
                 }
 
                 Global.TrayIcon.Visible = true;

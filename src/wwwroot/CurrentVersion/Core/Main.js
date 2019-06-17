@@ -1965,27 +1965,17 @@ Core.Login = function()
 	}
     Core.Session.Reset();
 
-    //var tmpArr, QueryString, token;
-    //var URL = document.location.toString(); // 获取带参URL
-    //if (URL.lastIndexOf("?") !== -1) {
-    //    QueryString = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
-    //    tmpArr = QueryString.split("&");// 分离参数
-    //    for (i = 0; i <= tmpArr.length; i++) {
-    //        try { eval(tmpArr[i]); }
-    //        catch (e) {
-    //            var re = new RegExp("(.*)=(.*)", "ig");
-    //            re.exec(tmpArr[i]);
-    //            try { eval(RegExp.$1 + "=" + "\"" + RegExp.$2 + "\""); }
-    //            catch (e) { }
-    //        }
-    //    }
-    //    alert(token);
-    //    alert(Core.Session.GetToken());
-    //    if (token != undefined)
-    //        Core.Session.GetToken() = token;
-    //}
-        
-    loginform_.Load(Core.GetUrl("Login.htm"), function () { });
+    var QueryString;
+    var URL = document.location.toString(); // 获取带参URL
+    if (URL.lastIndexOf("?") !== -1) {
+        QueryString = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
+    }
+
+    if (QueryString == undefined)
+        loginform_.Load(Core.GetUrl("Login.htm"), function () { });
+    else
+        loginform_.Load(Core.GetUrl("Login.htm?" + QueryString), function () { });
+
 }
 
 Core.ChatWith = function(peer)

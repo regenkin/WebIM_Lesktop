@@ -152,6 +152,7 @@ class Common_CH : Core.CommandHandler
                 }
                 else
                 {
+                    //
                     throw new Exception("无效的token！");
                 }
             }
