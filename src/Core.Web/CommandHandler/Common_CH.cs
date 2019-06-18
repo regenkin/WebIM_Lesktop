@@ -156,7 +156,7 @@ class Common_CH : Core.CommandHandler
                     string webapi = System.Configuration.ConfigurationManager.AppSettings["webapi"].ToString();
                     string appid = System.Configuration.ConfigurationManager.AppSettings["appid"].ToString();
                     string appsecret = System.Configuration.ConfigurationManager.AppSettings["appsecret"].ToString();
-                    string[] arr = token.Split('♂');
+                    string temptoken = token.Split('♂');
                     if (arr.Length == 2)
                     {
                         string temptoken = arr[0];
