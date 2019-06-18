@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HttpHelper">
+      <HintPath>..\Lib\HttpHelper.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -52,6 +55,7 @@
     <Compile Include="CommandCtrl.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CommandHandler\HttpData.cs" />
     <Compile Include="ConfigJs.cs" />
     <Compile Include="CustomService.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -60,6 +64,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DownloadHandler.cs" />
+    <Compile Include="CheckUserHandler.cs" />
     <Compile Include="LoginHandler.cs" />
     <Compile Include="LogoutHandler.cs" />
     <Compile Include="Management\Comm_AllGroups.aspx.cs">

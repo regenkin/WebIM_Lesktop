@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Core;
+using Core.Web;
 
 class Common_CH : Core.CommandHandler
 {
@@ -152,8 +153,60 @@ class Common_CH : Core.CommandHandler
                 }
                 else
                 {
-                    //
-                    throw new Exception("无效的token！");
+                    string webapi = System.Configuration.ConfigurationManager.AppSettings["webapi"].ToString();
+                    string appid = System.Configuration.ConfigurationManager.AppSettings["appid"].ToString();
+                    string appsecret = System.Configuration.ConfigurationManager.AppSettings["appsecret"].ToString();
+                    string[] arr = token.Split('♂');
+                    if (arr.Length == 2)
+                    {
+                        string temptoken = arr[0];
+                        string openusername = arr[1];
+
+                        #region webapi验证
+                        PostData<string> postdata = new PostData<string>() { token = temptoken, appid= appid, appsecret= appsecret ,data="{}"};
+                        //赋值令牌
+                        postdata.token = temptoken;
+                        //创建Httphelper对象
+                        CsharpHttpHelper.HttpHelper http = new CsharpHttpHelper.HttpHelper();
+                        //创建Httphelper参数对象
+                        CsharpHttpHelper.HttpItem item = new CsharpHttpHelper.HttpItem()
+                        {
+                            URL = webapi+"/api/oath/Account/GetAccessToken",//URL     必需项    
+                            Method = "post",//URL     可选项 默认为Get   
+                            ContentType = "application/json;charset=urf-8",//返回类型    可选项有默认值 application/x-www-form-urlencoded 键值对
+                            PostDataType = CsharpHttpHelper.Enum.PostDataType.String,//默认为字符串，同时支持Byte和文件方法
+                            PostEncoding = System.Text.Encoding.UTF8,//默认为Default，
+                            Postdata = CsharpHttpHelper.HttpHelper.ObjectToJson(postdata),//Post要发送的数据
+                        };
+                        //请求的返回值对象
+                        CsharpHttpHelper.HttpResult result = http.GetHtml(item);
+                        //获取请请求的Html
+                        var rData = CsharpHttpHelper.HttpHelper.JsonToObject<ReturnData>(result.Html) as ReturnData;
+                        #endregion
+
+                        if (rData.Status == 1)
+                        {
+                            //成功
+                            var so = CsharpHttpHelper.HttpHelper.JsonToObject<Dictionary<string, object>>(rData.Data.ToString()) as Dictionary<string, object>;
+                            if (so != null && so.Count > 0)
+                            {
+
+                            }
+                            int userid = AccountImpl.Instance.GetUserID(openusername);
+                            AccountInfo user_info = AccountImpl.Instance.GetUserInfo(userid);
+                            if (user_info == null) throw new Exception("用户不存在或密码错误！");
+                            Core.ServerImpl.Instance.Login(sessionId, Context, user_info.ID, Convert.ToBoolean(ps["ClientMode"]), null);
+                            current_user = AccountImpl.Instance.GetUserInfo(userid);
+                        }
+                        else
+                        {
+                            throw new Exception("无效的token！");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("无效的token！");
+                    }
                 }
             }
 
@@ -492,7 +545,9 @@ class Common_CH : Core.CommandHandler
 				ps["Nickname"].ToString(),
 				ps["Password"].ToString(),
 				ps["EMail"].ToString(),
-				-1, 0
+				-1, 
+                0,
+                ""
 			);
 
 			AccountInfo newUser = AccountImpl.Instance.GetUserInfo(id);

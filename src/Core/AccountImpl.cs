@@ -454,11 +454,11 @@ namespace Core
 			}
 		}
 
-		public int CreateUser(String name, String nickname, String password, String email, int deptId, int subType)
+		public int CreateUser(String name, String nickname, String password, String email, int deptId, int subType,string openid)
 		{
 			lock (lock_)
 			{
-				int id = AccountStorageImpl.CreateUser(name, nickname, password, email, deptId, subType,"");
+				int id = AccountStorageImpl.CreateUser(name, nickname, password, email, deptId, subType, openid);
 				RefreshUserInfo(AccountImpl.AdminID);
 				return id;
 			}

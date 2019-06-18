@@ -221,20 +221,10 @@ if(window.Core.UI == undefined) window.Core.UI = {};
             }
         };
 
-        var tmpArr, QueryString, token;
+        var token;
         var URL = document.location.toString(); // 获取带参URL
         if (URL.lastIndexOf("?") != -1) {
-            QueryString = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
-            tmpArr = QueryString.split("&");// 分离参数
-            for (i = 0; i <= tmpArr.length; i++) {
-                try { eval(tmpArr[i]); }
-                catch (e) {
-                    var re = new RegExp("(.*)=(.*)", "ig");
-                    re.exec(tmpArr[i]);
-                    try { eval(RegExp.$1 + "=" + "\"" + RegExp.$2 + "\""); }
-                    catch (e) { }
-                }
-            }
+            token = URL.substring(URL.lastIndexOf("token=") + 6, URL.length);
             if (token != undefined)
                 this_.DoLoginToken(token);
         }

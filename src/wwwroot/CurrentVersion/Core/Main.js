@@ -1970,11 +1970,10 @@ Core.Login = function()
     if (URL.lastIndexOf("?") !== -1) {
         QueryString = URL.substring(URL.lastIndexOf("?") + 1, URL.length);
     }
-
     if (QueryString == undefined)
         loginform_.Load(Core.GetUrl("Login.htm"), function () { });
     else
-        loginform_.Load(Core.GetUrl("Login.htm?" + QueryString), function () { });
+        loginform_.Load(Core.GetUrl("Login.htm") + "?"+ QueryString, function () { });
 
 }
 
