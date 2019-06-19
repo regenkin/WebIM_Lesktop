@@ -1,0 +1,445 @@
+﻿[2019-06-14 09:26:04] Service Initialize.
+[2019-06-14 09:26:04] Write Cache: Count = 0
+[2019-06-14 09:26:38] Exception:用户不存在或密码错误！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 141
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-14 09:26:44] Exception:用户不存在或密码错误！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 141
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-14 09:26:49] New Session:SessionID = "054DCE5D-5E7E-4C1A-9EA1-B3824B5BACA3", UserID='3'
+[2019-06-14 09:26:49] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 09:26:49
+[2019-06-14 09:26:53] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 09:26:49
+[2019-06-14 09:28:51] Clear Sessions Timer:Clear = "(3,054DCE5D-5E7E-4C1A-9EA1-B3824B5BACA3)"
+[2019-06-14 09:28:51] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-14 09:29:00] New Session:SessionID = "23DFFB2E-92BF-4E18-A6CF-9717875BD350", UserID='3'
+[2019-06-14 09:29:00] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 09:29:00
+[2019-06-14 09:29:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 09:29:00
+[2019-06-14 09:30:53] Write Cache: Count = 0
+[2019-06-14 09:30:53] Application End
+[2019-06-14 09:31:11] Service Initialize.
+[2019-06-14 09:31:11] Write Cache: Count = 0
+[2019-06-14 09:39:35] Write Cache: Count = 0
+[2019-06-14 09:39:35] Application End
+[2019-06-14 09:49:17] Service Initialize.
+[2019-06-14 09:49:17] Write Cache: Count = 0
+[2019-06-14 10:49:17] Write Cache: Count = 0
+[2019-06-14 11:49:17] Write Cache: Count = 0
+[2019-06-14 12:49:17] Write Cache: Count = 0
+[2019-06-14 13:20:03] SqlException:在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: TCP Provider, error: 0 - 不能访问网络位置。有关网络排除故障的信息，请参阅 Windows 帮助。)
+   在 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   在 System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   在 Core.SqlServerAccountStorage.Core.IAccountStorage.GetUserInfo(Int32 id) 位置 F:\gary\KF\WebIM\trunk\src\Core\Storage\SqlServerAccountStorage.cs:行号 37
+   在 Core.AccountImpl.RefreshUserInfo(Int32 id) 位置 F:\gary\KF\WebIM\trunk\src\Core\AccountImpl.cs:行号 158
+   在 Core.AccountImpl.GetUserInfo(Int32 userId) 位置 F:\gary\KF\WebIM\trunk\src\Core\AccountImpl.cs:行号 235
+   在 Core.ServerImpl.GetCurrentUser(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\ServerImpl.cs:行号 416
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 120
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-14 13:20:18] SqlException:在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: TCP Provider, error: 0 - 不能访问网络位置。有关网络排除故障的信息，请参阅 Windows 帮助。)
+   在 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   在 System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   在 Core.SqlServerAccountStorage.Core.IAccountStorage.GetUserInfo(Int32 id) 位置 F:\gary\KF\WebIM\trunk\src\Core\Storage\SqlServerAccountStorage.cs:行号 37
+   在 Core.AccountImpl.RefreshUserInfo(Int32 id) 位置 F:\gary\KF\WebIM\trunk\src\Core\AccountImpl.cs:行号 158
+   在 Core.AccountImpl.GetUserInfo(Int32 userId) 位置 F:\gary\KF\WebIM\trunk\src\Core\AccountImpl.cs:行号 235
+   在 Core.ServerImpl.GetCurrentUser(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\ServerImpl.cs:行号 416
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 120
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-14 13:26:16] Write Cache: Count = 0
+[2019-06-14 13:26:16] Application End
+[2019-06-14 15:07:02] Service Initialize.
+[2019-06-14 15:07:02] Write Cache: Count = 0
+[2019-06-14 15:07:08] New Session:SessionID = "F09D8847-9F4F-412D-A8F5-086B549D09CB", UserID='3'
+[2019-06-14 15:07:08] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:07:08
+[2019-06-14 15:07:22] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:07:09
+[2019-06-14 15:08:31] Write Cache: Count = 0
+[2019-06-14 15:08:31] Application End
+[2019-06-14 15:31:24] Service Initialize.
+[2019-06-14 15:31:24] Write Cache: Count = 0
+[2019-06-14 15:31:34] New Session:SessionID = "B962F1CC-E598-406A-B111-D1B9079920A0", UserID='3'
+[2019-06-14 15:31:34] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:31:34
+[2019-06-14 15:33:34] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:33:34] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:33:34
+[2019-06-14 15:35:34] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:35:34
+[2019-06-14 15:35:54] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:37:34] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:37:34
+[2019-06-14 15:38:03] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:37:34
+[2019-06-14 15:38:07] New Session:SessionID = "583B5975-3D70-4EE4-B166-611A26CF579B", UserID='3'
+[2019-06-14 15:38:07] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:38:07
+[2019-06-14 15:38:14] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:38:38] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:38:07
+[2019-06-14 15:38:56] New Session:SessionID = "42A5A1E9-7510-4C03-A6A0-F169F67CDF19", UserID='3'
+[2019-06-14 15:38:56] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:38:56
+[2019-06-14 15:39:34] Clear Sessions Timer:Clear = "(3,B962F1CC-E598-406A-B111-D1B9079920A0)"
+[2019-06-14 15:39:47] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:38:56
+[2019-06-14 15:39:53] New Session:SessionID = "7FF4DA58-43B0-491D-BB6C-1BD404C8635F", UserID='3'
+[2019-06-14 15:39:53] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:39:53
+[2019-06-14 15:40:14] Clear Sessions Timer:Clear = "(3,583B5975-3D70-4EE4-B166-611A26CF579B)"
+[2019-06-14 15:40:17] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:39:53
+[2019-06-14 15:40:22] New Session:SessionID = "699ECBE7-63D1-4BE1-BE86-338F8BAEEAC2", UserID='3'
+[2019-06-14 15:40:22] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:40:22
+[2019-06-14 15:40:34] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:41:01] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:40:22
+[2019-06-14 15:41:06] New Session:SessionID = "1EB85D3B-1218-4DEE-A3C7-2138862397DE", UserID='3'
+[2019-06-14 15:41:06] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:41:06
+[2019-06-14 15:41:14] Clear Sessions Timer:Clear = "(3,42A5A1E9-7510-4C03-A6A0-F169F67CDF19)"
+[2019-06-14 15:41:22] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:41:07
+[2019-06-14 15:41:28] New Session:SessionID = "6131780C-5E5A-481E-B211-444183418600", UserID='3'
+[2019-06-14 15:41:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:41:28
+[2019-06-14 15:41:54] Clear Sessions Timer:Clear = "(3,7FF4DA58-43B0-491D-BB6C-1BD404C8635F)"
+[2019-06-14 15:41:58] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:41:29
+[2019-06-14 15:42:03] New Session:SessionID = "55F2A6A8-421D-4439-98B8-E86463C0D834", UserID='3'
+[2019-06-14 15:42:03] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:42:03
+[2019-06-14 15:42:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:42:03
+[2019-06-14 15:42:19] New Session:SessionID = "11EFF73B-AB8F-4763-B3C6-65C88F9B4B45", UserID='3'
+[2019-06-14 15:42:19] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:42:19
+[2019-06-14 15:42:34] Clear Sessions Timer:Clear = "(3,699ECBE7-63D1-4BE1-BE86-338F8BAEEAC2)"
+[2019-06-14 15:42:42] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:42:19
+[2019-06-14 15:42:46] New Session:SessionID = "6DD6215E-F53A-48DC-BF32-76D4599CE925", UserID='3'
+[2019-06-14 15:42:46] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:42:46
+[2019-06-14 15:42:54] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:43:07] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:42:46
+[2019-06-14 15:43:10] New Session:SessionID = "7CA2F41A-D2EB-49A8-89C0-562720CC5037", UserID='3'
+[2019-06-14 15:43:10] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:43:10
+[2019-06-14 15:43:14] Clear Sessions Timer:Clear = "(3,1EB85D3B-1218-4DEE-A3C7-2138862397DE)"
+[2019-06-14 15:43:34] Clear Sessions Timer:Clear = "(3,6131780C-5E5A-481E-B211-444183418600)"
+[2019-06-14 15:43:38] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:43:10
+[2019-06-14 15:43:42] New Session:SessionID = "6AFE341C-76C5-4613-9304-2C5247316FCB", UserID='3'
+[2019-06-14 15:43:42] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:43:42
+[2019-06-14 15:44:14] Clear Sessions Timer:Clear = "(3,55F2A6A8-421D-4439-98B8-E86463C0D834)"
+[2019-06-14 15:44:34] Clear Sessions Timer:Clear = "(3,11EFF73B-AB8F-4763-B3C6-65C88F9B4B45)"
+[2019-06-14 15:44:54] Clear Sessions Timer:Clear = "(3,6DD6215E-F53A-48DC-BF32-76D4599CE925)"
+[2019-06-14 15:44:59] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:44:54
+[2019-06-14 15:45:03] New Session:SessionID = "07DD775E-FE4E-487A-9DF6-F81A23442AE9", UserID='3'
+[2019-06-14 15:45:03] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:45:03
+[2019-06-14 15:45:11] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:45:03
+[2019-06-14 15:45:14] Clear Sessions Timer:Clear = "(3,7CA2F41A-D2EB-49A8-89C0-562720CC5037)"
+[2019-06-14 15:45:14] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-14 15:45:15] New Session:SessionID = "6E0B17E5-1FCA-47DE-9ECC-7ECCD11BCCF0", UserID='3'
+[2019-06-14 15:45:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:45:15
+[2019-06-14 15:46:54] Clear Sessions Timer:Clear = "(3,6AFE341C-76C5-4613-9304-2C5247316FCB)"
+[2019-06-14 15:47:14] Clear Sessions Timer:Clear = "(3,07DD775E-FE4E-487A-9DF6-F81A23442AE9)"
+[2019-06-14 15:47:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:47:15
+[2019-06-14 15:47:34] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:49:54] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:50:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:50:15
+[2019-06-14 15:52:14] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:52:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:52:15
+[2019-06-14 15:54:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:54:15
+[2019-06-14 15:54:34] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:56:54] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:57:04] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:56:15
+[2019-06-14 15:57:08] New Session:SessionID = "A5413D07-0759-4A11-A712-A2B9164405C1", UserID='3'
+[2019-06-14 15:57:08] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:57:08
+[2019-06-14 15:57:41] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:57:08
+[2019-06-14 15:57:49] New Session:SessionID = "CF6B7505-897A-4D50-B628-C50D63F65991", UserID='3'
+[2019-06-14 15:57:49] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:57:49
+[2019-06-14 15:58:02] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:57:49
+[2019-06-14 15:58:06] New Session:SessionID = "798AC245-00DE-40B9-8B5E-3A203457832F", UserID='3'
+[2019-06-14 15:58:06] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 15:58:06
+[2019-06-14 15:58:34] Clear Sessions Timer:Clear = "(3,6E0B17E5-1FCA-47DE-9ECC-7ECCD11BCCF0)"
+[2019-06-14 15:59:14] Clear Sessions Timer:Clear = "(3,A5413D07-0759-4A11-A712-A2B9164405C1)"
+[2019-06-14 15:59:15] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 15:59:55] Clear Sessions Timer:Clear = "(3,CF6B7505-897A-4D50-B628-C50D63F65991)"
+[2019-06-14 16:00:06] Write Cache: Count = 0
+[2019-06-14 16:00:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 16:00:15
+[2019-06-14 16:01:35] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-14 16:01:45] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-14 16:01:15
+[2019-06-14 16:03:35] Clear Sessions Timer:Clear = "(3,798AC245-00DE-40B9-8B5E-3A203457832F)"
+[2019-06-14 16:03:55] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-14 16:05:37] Write Cache: Count = 0
+[2019-06-14 16:05:37] Application End
+[2019-06-17 09:01:22] Service Initialize.
+[2019-06-17 09:01:22] Write Cache: Count = 0
+[2019-06-17 09:02:21] Write Cache: Count = 0
+[2019-06-17 09:02:21] Application End
+[2019-06-17 09:04:01] Service Initialize.
+[2019-06-17 09:04:02] Write Cache: Count = 0
+[2019-06-17 09:10:24] Write Cache: Count = 0
+[2019-06-17 09:10:24] Application End
+[2019-06-17 09:14:35] Service Initialize.
+[2019-06-17 09:14:35] Write Cache: Count = 0
+[2019-06-17 09:23:50] Write Cache: Count = 0
+[2019-06-17 09:23:50] Application End
+[2019-06-17 09:27:05] Service Initialize.
+[2019-06-17 09:27:05] Write Cache: Count = 0
+[2019-06-17 09:28:47] Write Cache: Count = 0
+[2019-06-17 09:28:47] Application End
+[2019-06-17 09:45:51] Service Initialize.
+[2019-06-17 09:45:52] Write Cache: Count = 0
+[2019-06-17 09:49:15] Write Cache: Count = 0
+[2019-06-17 09:49:15] Application End
+[2019-06-17 09:49:46] Service Initialize.
+[2019-06-17 09:49:46] Write Cache: Count = 0
+[2019-06-17 09:50:14] Write Cache: Count = 0
+[2019-06-17 09:50:14] Application End
+[2019-06-17 09:54:06] Service Initialize.
+[2019-06-17 09:54:06] Write Cache: Count = 0
+[2019-06-17 10:03:38] Write Cache: Count = 0
+[2019-06-17 10:03:38] Application End
+[2019-06-17 10:04:34] Service Initialize.
+[2019-06-17 10:04:34] Exception:无效的token！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 156
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-17 10:04:34] Write Cache: Count = 0
+[2019-06-17 10:07:34] Write Cache: Count = 0
+[2019-06-17 10:07:34] Application End
+[2019-06-17 13:47:37] Service Initialize.
+[2019-06-17 13:47:37] Write Cache: Count = 0
+[2019-06-17 13:47:37] Exception:用户不存在或密码错误！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 147
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-17 13:54:49] Write Cache: Count = 0
+[2019-06-17 13:54:49] Application End
+[2019-06-17 13:55:31] Service Initialize.
+[2019-06-17 13:55:31] Write Cache: Count = 0
+[2019-06-17 13:56:32] New Session:SessionID = "B9802E1A-3BCA-4622-ACE7-38D7CCFDBDBF", UserID='3'
+[2019-06-17 13:56:32] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 13:56:32
+[2019-06-17 13:58:32] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 13:58:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 13:58:52
+[2019-06-17 14:00:52] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:00:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:00:52
+[2019-06-17 14:02:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:02:52
+[2019-06-17 14:03:12] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:04:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:04:52
+[2019-06-17 14:05:32] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:06:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:06:52
+[2019-06-17 14:07:52] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:08:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:08:52
+[2019-06-17 14:10:12] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:10:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:10:52
+[2019-06-17 14:12:32] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:12:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:12:52
+[2019-06-17 14:14:52] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:14:52] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:14:52
+[2019-06-17 14:16:53] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:16:53
+[2019-06-17 14:17:12] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:18:53] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:18:53
+[2019-06-17 14:19:32] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:20:53] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:20:53
+[2019-06-17 14:21:53] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-17 14:22:53] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:22:53
+[2019-06-17 14:23:41] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-17 14:22:53
+[2019-06-17 14:24:13] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:25:13] Clear Sessions Timer:Clear = "(3,B9802E1A-3BCA-4622-ACE7-38D7CCFDBDBF)"
+[2019-06-17 14:26:33] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:28:53] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:31:13] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:33:33] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:35:53] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:38:13] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:40:33] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:42:53] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:45:13] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:47:34] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:49:54] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:52:14] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:54:34] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:55:31] Write Cache: Count = 0
+[2019-06-17 14:56:54] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 14:59:14] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:01:34] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:03:54] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:06:14] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:08:34] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:10:54] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:13:14] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:15:35] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:17:55] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:20:15] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:22:35] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:24:55] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:27:15] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:29:35] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:31:55] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:34:15] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:36:35] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:38:55] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:41:16] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:43:36] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:45:56] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:48:16] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:50:36] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:52:56] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:55:16] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:55:31] Write Cache: Count = 0
+[2019-06-17 15:57:36] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 15:59:56] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:02:16] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:04:36] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:06:56] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:09:17] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:11:37] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:13:57] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:16:17] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:18:37] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:20:57] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:23:17] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:25:37] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:27:57] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:30:17] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:32:37] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:34:58] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:37:18] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:39:38] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:41:58] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:44:18] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:46:38] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:48:58] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:51:18] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:53:38] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:55:31] Write Cache: Count = 0
+[2019-06-17 16:55:58] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 16:58:18] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:00:38] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:02:59] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:05:19] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:07:39] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:09:59] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:12:19] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:14:39] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:16:59] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:19:19] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:21:39] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:23:59] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:26:19] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:28:39] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:31:00] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:33:20] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:35:40] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:38:00] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:40:20] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:42:40] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:45:00] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:47:20] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:49:40] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:52:00] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:54:20] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:55:31] Write Cache: Count = 0
+[2019-06-17 17:56:41] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 17:59:01] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 18:01:21] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 18:03:41] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 18:06:01] All Sessions: Account Count = 0, Session Count = 0
+[2019-06-17 18:07:58] Write Cache: Count = 0
+[2019-06-17 18:07:58] Application End
+[2019-06-17 18:08:37] Service Initialize.
+[2019-06-17 18:08:37] Write Cache: Count = 0
+[2019-06-17 18:36:15] Write Cache: Count = 0
+[2019-06-17 18:36:15] Application End
+[2019-06-18 10:16:44] Service Initialize.
+[2019-06-18 10:16:45] Write Cache: Count = 0
+[2019-06-18 10:48:50] Write Cache: Count = 0
+[2019-06-18 10:48:50] Application End
+[2019-06-18 10:50:31] Service Initialize.
+[2019-06-18 10:50:32] Write Cache: Count = 0
+[2019-06-18 10:55:28] Write Cache: Count = 0
+[2019-06-18 10:55:28] Application End
+[2019-06-18 10:55:48] Service Initialize.
+[2019-06-18 10:55:48] Write Cache: Count = 0
+[2019-06-18 10:59:08] Write Cache: Count = 0
+[2019-06-18 10:59:08] Application End
+[2019-06-18 10:59:23] Service Initialize.
+[2019-06-18 10:59:23] Write Cache: Count = 0
+[2019-06-18 11:08:26] Write Cache: Count = 0
+[2019-06-18 11:08:26] Application End
+[2019-06-18 11:09:00] Service Initialize.
+[2019-06-18 11:09:00] Write Cache: Count = 0
+[2019-06-18 11:10:11] Write Cache: Count = 0
+[2019-06-18 11:10:11] Application End
+[2019-06-18 11:10:46] Service Initialize.
+[2019-06-18 11:10:47] Write Cache: Count = 0
+[2019-06-18 11:12:21] Exception:无效的token！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 203
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-18 11:14:04] Write Cache: Count = 0
+[2019-06-18 11:14:04] Application End
+[2019-06-18 11:14:19] Service Initialize.
+[2019-06-18 11:14:19] Write Cache: Count = 0
+[2019-06-18 11:17:11] Write Cache: Count = 0
+[2019-06-18 11:17:11] Application End
+[2019-06-18 11:17:38] Service Initialize.
+[2019-06-18 11:17:38] Write Cache: Count = 0
+[2019-06-18 11:22:12] Write Cache: Count = 0
+[2019-06-18 11:22:12] Application End
+[2019-06-18 11:22:34] Service Initialize.
+[2019-06-18 11:22:34] Write Cache: Count = 0
+[2019-06-18 11:23:19] Exception:无效的token！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 203
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-18 11:33:11] Exception:无效的token！
+   在 Common_CH.Process() 位置 F:\gary\KF\WebIM\trunk\src\Core.Web\CommandHandler\Common_CH.cs:行号 203
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-18 12:22:33] Write Cache: Count = 0
+[2019-06-18 13:22:33] Write Cache: Count = 0
+[2019-06-18 13:33:26] Write Cache: Count = 0
+[2019-06-18 13:33:26] Application End
+[2019-06-18 13:33:50] Service Initialize.
+[2019-06-18 13:33:50] Write Cache: Count = 0
+[2019-06-18 13:36:12] Exception:无效的token！
+   在 Common_CH.Process()
+   在 Core.SendCommandHandler.System.Web.IHttpHandler.ProcessRequest(HttpContext context) 位置 F:\gary\KF\WebIM\trunk\src\Core\SendCommandHandler.cs:行号 45
+[2019-06-18 13:37:00] New Session:SessionID = "66380A49-39F2-4948-A937-E05064129543", UserID='3'
+[2019-06-18 13:37:00] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 13:37:00
+[2019-06-18 13:39:00] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-18 13:39:00] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 13:39:00
+[2019-06-18 13:39:42] New Session:SessionID = "DA47524F-3B1C-4AF4-A6EC-B7DF3E849166", UserID='3'
+[2019-06-18 13:39:42] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 13:39:42
+[2019-06-18 17:33:59] Service Initialize.
+[2019-06-18 17:33:59] Write Cache: Count = 0
+[2019-06-18 17:35:02] New Session:SessionID = "294C2D87-5444-4448-A96E-FAE172B49FD0", UserID='3'
+[2019-06-18 17:35:02] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:35:02
+[2019-06-18 17:35:14] New Session:SessionID = "3AAA353C-B401-4880-90D3-AC9EA65013D5", UserID='3'
+[2019-06-18 17:35:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:35:14
+[2019-06-18 17:35:15] Reset Session:SessionID = "294C2D87-5444-4448-A96E-FAE172B49FD0", UserID='3'
+[2019-06-18 17:35:15] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:35:15
+[2019-06-18 17:36:22] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:35:20
+[2019-06-18 17:36:22] Write Cache: Count = 0
+[2019-06-18 17:36:22] Application End
+[2019-06-18 17:36:25] Service Initialize.
+[2019-06-18 17:36:25] Write Cache: Count = 0
+[2019-06-18 17:36:25] Reset Session:SessionID = "3AAA353C-B401-4880-90D3-AC9EA65013D5", UserID='3'
+[2019-06-18 17:36:25] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:36:25
+[2019-06-18 17:38:25] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-18 17:38:25] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:38:25
+[2019-06-18 17:40:25] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:39:25
+[2019-06-18 17:40:25] Write Cache: Count = 0
+[2019-06-18 17:40:25] Application End
+[2019-06-18 17:40:27] Service Initialize.
+[2019-06-18 17:40:27] Write Cache: Count = 0
+[2019-06-18 17:40:28] Reset Session:SessionID = "3AAA353C-B401-4880-90D3-AC9EA65013D5", UserID='3'
+[2019-06-18 17:40:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:40:28
+[2019-06-18 17:42:28] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-18 17:42:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:42:28
+[2019-06-18 17:44:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:44:28
+[2019-06-18 17:44:48] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-18 17:46:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:46:28
+[2019-06-18 17:47:08] All Sessions: Account Count = 1, Session Count = 1
+[2019-06-18 17:48:28] UpdateLastAccessTime: UserID = 3, LastAccessTime = 2019-06-18 17:48:28
+[2019-06-18 17:49:28] All Sessions: Account Count = 1, Session Count = 1
