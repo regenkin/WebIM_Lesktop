@@ -501,9 +501,6 @@
       <DependentUpon>TestWindow.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CurrentVersion\Tests\TestWindow.aspx.designer.cs">
-      <DependentUpon>TestWindow.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Debug.aspx.cs">
       <DependentUpon>Debug.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
