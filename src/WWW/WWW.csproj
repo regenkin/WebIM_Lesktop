@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Public\Data\history.htm" />
-    <Content Include="App_Data\trace.txt" />
     <Content Include="CurrentVersion\AddFriendForm.htm" />
     <Content Include="CurrentVersion\AdminMsgManagerForm.htm" />
     <Content Include="CurrentVersion\ChatForm.htm" />
@@ -471,7 +470,6 @@
     <Content Include="Global.asax" />
     <Content Include="install.aspx" />
     <Content Include="Update\latest.xml" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\PublishProfiles\WebIM.pubxml" />
@@ -514,13 +512,6 @@
     </Compile>
     <Compile Include="install.aspx.designer.cs">
       <DependentUpon>install.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
