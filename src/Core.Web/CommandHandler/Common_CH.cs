@@ -187,9 +187,36 @@ class Common_CH : Core.CommandHandler
                         var so = CsharpHttpHelper.HttpHelper.JsonToObject<Dictionary<string, object>>(rData.Data.ToString()) as Dictionary<string, object>;
                         if (so != null && so.Count > 0)
                         {
-                            openusername = so["UserID"].ToString();
+                            var name_salt = so["UserID"].ToString();//用户名和盐值
+                            temptoken = so["AccessToken"].ToString();//全局令牌
+                            string[] arr = name_salt.Split('♂');
+                            if (arr.Length == 2)
+                            {
+                                openusername = arr[0];
+                                var salt = arr[1];
+                                ReturnData rDataUser = Api_CheckUserValid(webapi + "api/CMS/Login/CheckUserValid", temptoken, openusername, salt);
+                                if (rDataUser != null)
+                                {
+                                    if (rDataUser.Status == 1)
+                                    {
+                                        //成功
+                                        var rUser = CsharpHttpHelper.HttpHelper.JsonToObject<Dictionary<string, object>>(rData.Data.ToString()) as Dictionary<string, object>;
+                                        if (so != null && so.Count > 0)
+                                        {
+                                            rUser["user_name"].ToString();
+                                            rUser["nick_name"].ToString();
+                                            rUser["telphone"].ToString();
+                                            rUser["email"].ToString();
+                                            rUser["Token"].ToString();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception(rDataUser.Message);
+                                    }
+                                }
+                            }
                         }
-                        int userid = AccountImpl.Instance.GetUserID(openusername);
+                        int userid = AccountImpl.Instance.GetUserByOpenID(openusername);
                         AccountInfo user_info = AccountImpl.Instance.GetUserInfo(userid);
                         if (user_info == null) throw new Exception("用户不存在或密码错误！");
                         Core.ServerImpl.Instance.Login(sessionId, Context, user_info.ID, Convert.ToBoolean(ps["ClientMode"]), null);
@@ -585,7 +612,40 @@ class Common_CH : Core.CommandHandler
 		throw new NotImplementedException(String.Format("Command \"{0}\" isn't implemented", action));
 	}
 
-	public override void Process(object data)
+    /// <summary>
+    /// 检查用户是否有效
+    /// </summary>
+    /// <param name="accesstoken">全局令牌</param>
+    /// <param name="openusername">kinfarid</param>
+    /// <param name="salt">盐值</param>
+    private dynamic Api_CheckUserValid(string weburl,string accesstoken, string openusername, string salt)
+    {
+        #region webapi验证
+        PostData<string> postdata = new PostData<string>() { token = accesstoken, data = string.Format(@"{{""username"":""{0}"",""salt"":""{1}""}}", openusername, salt) };
+        //赋值令牌
+        postdata.token = accesstoken;
+        //创建Httphelper对象
+        CsharpHttpHelper.HttpHelper http = new CsharpHttpHelper.HttpHelper();
+        //创建Httphelper参数对象
+        CsharpHttpHelper.HttpItem item = new CsharpHttpHelper.HttpItem()
+        {
+            URL = weburl,//URL     必需项    
+            Method = "post",//URL     可选项 默认为Get   
+            ContentType = "application/json;charset=urf-8",//返回类型    可选项有默认值 application/x-www-form-urlencoded 键值对
+            PostDataType = CsharpHttpHelper.Enum.PostDataType.String,//默认为字符串，同时支持Byte和文件方法
+            PostEncoding = System.Text.Encoding.UTF8,//默认为Default，
+            Postdata = CsharpHttpHelper.HttpHelper.ObjectToJson(postdata),//Post要发送的数据
+        };
+        //请求的返回值对象
+        CsharpHttpHelper.HttpResult result = http.GetHtml(item);
+        //获取请请求的Html
+        ReturnData rData = CsharpHttpHelper.HttpHelper.JsonToObject<ReturnData>(result.Html) as ReturnData;
+
+        return rData;
+        #endregion
+    }
+
+    public override void Process(object data)
 	{
 		throw new NotImplementedException();
 	}

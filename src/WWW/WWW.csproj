@@ -487,6 +487,7 @@
     <Content Include="EmbedCS.ashx" />
     <Content Include="web.config" />
     <Content Include="website.publishproj" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -516,7 +517,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
-    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
