@@ -1,5 +1,5 @@
 ﻿(function() {
-
+    alert(1);
 if(window.Core == undefined) window.Core = {};
 if(window.Core.UI == undefined) window.Core.UI = {};
 	
