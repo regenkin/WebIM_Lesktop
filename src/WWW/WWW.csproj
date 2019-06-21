@@ -523,6 +523,10 @@
       <Project>{44b8d277-1048-4920-a887-adb46fc3a0d1}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core.Web\Core.Web.csproj">
+      <Project>{79c9d775-3881-42d6-a5c2-03e423b08b99}</Project>
+      <Name>Core.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{2c972c6a-c902-4d86-a83a-6cea3ea4cd92}</Project>
       <Name>Core</Name>
