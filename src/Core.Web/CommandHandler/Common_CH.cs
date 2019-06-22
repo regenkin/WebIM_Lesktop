@@ -222,7 +222,7 @@ class Common_CH : Core.CommandHandler
                                     }
                                     else
                                     {
-                                        throw new Exception("无效的关联信息！");
+                                        throw new Exception("无效的关联信息！"+ rDataUser.Message+ rDataUser.Data??"");
                                     }
                                 }
                             }
