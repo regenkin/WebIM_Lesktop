@@ -130,7 +130,6 @@ class Common_CH : Core.CommandHandler
             }
             else
             {
-                String name = ps["User"].ToString();
                 string token = ps["Token"].ToString();
                 if (string.IsNullOrWhiteSpace(token))
                 {

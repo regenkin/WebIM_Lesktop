@@ -485,7 +485,9 @@
     <Content Include="CurrentVersion\SendFile.ashx" />
     <Content Include="Embed.ashx" />
     <Content Include="EmbedCS.ashx" />
-    <Content Include="web.config" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="website.publishproj" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="web.Debug.config">
